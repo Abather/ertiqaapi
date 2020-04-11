@@ -1,0 +1,806 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "User Groups",
+    "version": "1.0",
+    "description": "Users Groups APis"
+  },
+  "servers": [
+    {
+      "url": "https://ertiqatest.mahdi.cloud/api/usergroups"
+    }
+  ],
+  "paths": {
+    "/getall": {
+      "post": {
+        "summary": "Get User Groups",
+        "operationId": "post-getall",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "userGroupID": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "parentID": {
+                      "type": "string"
+                    },
+                    "parentName": {
+                      "type": "string"
+                    },
+                    "stateID": {
+                      "type": "string"
+                    },
+                    "state": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "return all non-deleted user groups",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization"
+          }
+        ],
+        "tags": [
+          "API"
+        ]
+      }
+    },
+    "/show/{userGroupID}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "userGroupID",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get User Group Data",
+        "tags": [
+          "API"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "state": {
+                      "type": "string"
+                    },
+                    "stateID": {
+                      "type": "string"
+                    },
+                    "parentName": {
+                      "type": "string"
+                    },
+                    "parentID": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "userGroupID": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "userGroupID": "admins",
+                      "name": "الإدارة العليا",
+                      "description": "إدارة المنصة العليا",
+                      "parentID": null,
+                      "stateID": "active",
+                      "created_at": "2020-04-10 08:42:39",
+                      "updated_at": "2020-04-10 08:42:39"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-show-userGroupID",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization"
+          }
+        ]
+      }
+    },
+    "/addnewgroup": {
+      "post": {
+        "summary": "Create New User Group",
+        "operationId": "post-addnewgroup",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "userGroupID": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userGroupID": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "parentID": {
+                    "type": "string"
+                  },
+                  "stateID": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization"
+          }
+        ],
+        "tags": [
+          "API"
+        ]
+      }
+    },
+    "/update": {
+      "post": {
+        "summary": "Udpate User Group Data",
+        "operationId": "post-update",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "userGroupID": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "stateID": {
+                    "type": "string"
+                  },
+                  "parentID": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "tags": [
+          "API"
+        ]
+      }
+    },
+    "/delete/{userGroupID}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "userGroupID",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "Delete User Group",
+        "operationId": "post-delete-userGroupID",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massege": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massege": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massege": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization"
+          }
+        ],
+        "description": "change user group state into delete, only works if the group is empty",
+        "tags": [
+          "API"
+        ]
+      }
+    },
+    "/getprivilege": {
+      "post": {
+        "summary": "Get Group Privileges",
+        "operationId": "post-getprivilege",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "privilegeValue": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userGroupID": {
+                    "type": "string"
+                  },
+                  "privilegeID": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "userGroupID",
+                  "privilegeID"
+                ]
+              }
+            }
+          }
+        },
+        "tags": [
+          "API"
+        ]
+      }
+    },
+    "/getallprivileges": {
+      "post": {
+        "summary": "Get All Privileges for Group",
+        "operationId": "post-getallprivileges",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "privilegeID": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "privilegeValue": {
+                      "type": "boolean"
+                    },
+                    "parentID": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userGroupID": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "userGroupID"
+                ]
+              }
+            }
+          },
+          "description": ""
+        },
+        "tags": [
+          "API"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization"
+          }
+        ]
+      }
+    },
+    "/updategroupprivilege": {
+      "post": {
+        "summary": "Update Group Privilege",
+        "operationId": "post-updategroupprivilege",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "API"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userGroupID": {
+                    "type": "string"
+                  },
+                  "privilegeID": {
+                    "type": "string"
+                  },
+                  "privilegeValue": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        }
+      }
+    },
+    "/getusers/{userGroupID}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "userGroupID",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get Group Users",
+        "tags": [
+          "API"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "fullName": {
+                      "type": "string"
+                    },
+                    "displayName": {
+                      "type": "string"
+                    },
+                    "gender": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "phoneNumber": {
+                      "type": "string"
+                    },
+                    "avatar": {
+                      "type": "string"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "stateID": {
+                      "type": "string"
+                    },
+                    "userGroup": {
+                      "type": "string"
+                    },
+                    "userGroupID": {
+                      "type": "string"
+                    },
+                    "privileges": {
+                      "type": "array",
+                      "items": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-getusers-userGroupID",
+        "description": "Return all users assigned to the group",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization"
+          }
+        ]
+      }
+    },
+    "/setnewadmin": {
+      "post": {
+        "summary": "Set New Admin to Group",
+        "operationId": "post-setnewadmin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "API"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userID": {
+                    "type": "integer"
+                  },
+                  "userGroupID": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "superAdmin": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "usergroup": {
+        "title": "userGroup",
+        "type": "object",
+        "properties": {
+          "userGroupID": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "parentID": {
+            "type": "string"
+          },
+          "stateID": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "userGroupID",
+          "name",
+          "stateID"
+        ],
+        "x-tags": [
+          "Model"
+        ]
+      },
+      "groupAdministrators": {
+        "title": "groupAdministrators",
+        "type": "object",
+        "description": "used to create relation between users and groups as thier adminis",
+        "x-tags": [
+          "Model"
+        ],
+        "properties": {
+          "userID": {
+            "type": "integer"
+          },
+          "userGroupID": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "superAdmin": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "userID",
+          "userGroupID",
+          "superAdmin"
+        ]
+      },
+      "groupPrivilege": {
+        "title": "groupPrivilege",
+        "type": "object",
+        "x-tags": [
+          "Model"
+        ],
+        "description": "uesed to create relation between user groups and privileges",
+        "properties": {
+          "privilegeID": {
+            "type": "string"
+          },
+          "userGroupID": {
+            "type": "string"
+          },
+          "privilegeValue": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "privilegeID",
+          "userGroupID",
+          "privilegeValue"
+        ]
+      }
+    }
+  }
+}

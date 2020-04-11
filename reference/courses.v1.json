@@ -1,0 +1,14 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Courses",
+    "version": "1.0",
+    "description": "Courses APis"
+  },
+  "servers": [
+    {
+      "url": "https://ertiqatest.mahdi.cloud/api/courses"
+    }
+  ],
+  "paths": {}
+}

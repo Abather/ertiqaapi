@@ -1,17 +1,17 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "users",
+    "title": "Users",
     "version": "1.0",
-    "description": "users APis"
+    "description": "Users APis"
   },
   "servers": [
     {
-      "url": "https://ertiqatest.mahdi.cloud/api"
+      "url": "https://ertiqatest.mahdi.cloud/api/users"
     }
   ],
   "paths": {
-    "/users/login": {
+    "/login": {
       "post": {
         "summary": "User Login",
         "operationId": "post-users-login",
@@ -26,6 +26,11 @@
                     "token": {
                       "type": "string"
                     }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC91c2Vyc1wvbG9naW4iLCJpYXQiOjE1ODY1NDMzMTUsImV4cCI6MTU4NjU0NjkxNSwibmJmIjoxNTg2NTQzMzE1LCJqdGkiOiJySGd1YlV6TEFtUW56aHBRIiwic3ViIjozLCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.lTU78N4JVLQFTKyjZwIH1TBru7FfUUkL9KiUrY7JyNg"
                   }
                 }
               }
@@ -50,7 +55,7 @@
             }
           }
         },
-        "description": "use for user login",
+        "description": "used for user login",
         "requestBody": {
           "content": {
             "application/json": {
@@ -70,11 +75,958 @@
                 "required": [
                   "password"
                 ]
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "email": "mohamed@ertiqa.tk",
+                    "password": "secret12"
+                  }
+                },
+                "example-2": {
+                  "value": {
+                    "displayName": "Ertiqa",
+                    "password": "secret12"
+                  }
+                }
               }
             }
           },
           "description": ""
+        },
+        "tags": [
+          "API"
+        ]
+      },
+      "parameters": []
+    },
+    "/getall": {
+      "post": {
+        "summary": "Get All Users",
+        "operationId": "post-users-getall",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "fullName": {
+                      "type": "string"
+                    },
+                    "displayName": {
+                      "type": "string"
+                    },
+                    "gender": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "phoneNumber": {
+                      "type": "string"
+                    },
+                    "avatar": {
+                      "type": "string"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "stateID": {
+                      "type": "string"
+                    },
+                    "userGroup": {
+                      "type": "string"
+                    },
+                    "userGroupID": {
+                      "type": "string"
+                    },
+                    "privileges": {
+                      "type": "array",
+                      "items": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "current_page": 1,
+                      "data": [
+                        {
+                          "id": 1,
+                          "fullName": "Mohammed Sadiq",
+                          "displayName": "Abather",
+                          "gender": "Male",
+                          "email": "m.abather@icloud.com",
+                          "phoneNumber": "+966598929695",
+                          "avatar": "",
+                          "state": "مفعل",
+                          "stateID": "active",
+                          "userGroup": "الإدارة العليا",
+                          "userGroupID": "admins",
+                          "privileges": {
+                            "addNewUser": true,
+                            "editUsers": true,
+                            "changeUserState": true,
+                            "resetUserPassword": true
+                          }
+                        },
+                        {
+                          "id": 2,
+                          "fullName": "Mohammed Sadiq",
+                          "displayName": "Moahmmed",
+                          "gender": "Male",
+                          "email": "m.abather@gmail.com",
+                          "phoneNumber": "+966588929695",
+                          "avatar": "",
+                          "state": "مفعل",
+                          "stateID": "active",
+                          "userGroup": "مستخدم",
+                          "userGroupID": "users",
+                          "privileges": {
+                            "addNewUser": true,
+                            "editUsers": true,
+                            "changeUserState": true,
+                            "resetUserPassword": true
+                          }
+                        },
+                        {
+                          "id": 3,
+                          "fullName": "Mohammed Sadiq",
+                          "displayName": "Sadiq",
+                          "gender": "Male",
+                          "email": "m.abather@outlook.com",
+                          "phoneNumber": "+966548929695",
+                          "avatar": "",
+                          "state": "مفعل",
+                          "stateID": "active",
+                          "userGroup": "كاتب",
+                          "userGroupID": "writers",
+                          "privileges": {
+                            "addNewUser": true,
+                            "editUsers": true,
+                            "changeUserState": true,
+                            "resetUserPassword": true
+                          }
+                        },
+                        {
+                          "id": 4,
+                          "fullName": "Ibrahim",
+                          "displayName": "Ibrahim",
+                          "gender": "Male",
+                          "email": "ibrahim@ertiqa.tk",
+                          "phoneNumber": "05123456789",
+                          "avatar": "",
+                          "state": "مفعل",
+                          "stateID": "active",
+                          "userGroup": "الإدارة العليا",
+                          "userGroupID": "admins",
+                          "privileges": {
+                            "addNewUser": true,
+                            "editUsers": true,
+                            "changeUserState": true,
+                            "resetUserPassword": true
+                          }
+                        },
+                        {
+                          "id": 5,
+                          "fullName": "Khaled",
+                          "displayName": "Khaled",
+                          "gender": "Male",
+                          "email": "khaled@ertiqa.tk",
+                          "phoneNumber": "051234589",
+                          "avatar": "",
+                          "state": "مفعل",
+                          "stateID": "active",
+                          "userGroup": "كاتب",
+                          "userGroupID": "writers",
+                          "privileges": {
+                            "addNewUser": true,
+                            "editUsers": true,
+                            "changeUserState": true,
+                            "resetUserPassword": true
+                          }
+                        },
+                        {
+                          "id": 6,
+                          "fullName": "Essam",
+                          "displayName": "Essam",
+                          "gender": "Male",
+                          "email": "essam@ertiqa.tk",
+                          "phoneNumber": "053456789",
+                          "avatar": "",
+                          "state": "مفعل",
+                          "stateID": "active",
+                          "userGroup": "كاتب",
+                          "userGroupID": "writers",
+                          "privileges": {
+                            "addNewUser": true,
+                            "editUsers": true,
+                            "changeUserState": true,
+                            "resetUserPassword": true
+                          }
+                        },
+                        {
+                          "id": 7,
+                          "fullName": "Abdullah",
+                          "displayName": "Abdullah",
+                          "gender": "Male",
+                          "email": "abdullah@ertiqa.tk",
+                          "phoneNumber": "05345689",
+                          "avatar": "",
+                          "state": "مفعل",
+                          "stateID": "active",
+                          "userGroup": "كاتب",
+                          "userGroupID": "writers",
+                          "privileges": {
+                            "addNewUser": true,
+                            "editUsers": true,
+                            "changeUserState": true,
+                            "resetUserPassword": true
+                          }
+                        }
+                      ],
+                      "first_page_url": "/?page=1",
+                      "from": 1,
+                      "last_page": 1,
+                      "last_page_url": "/?page=1",
+                      "next_page_url": null,
+                      "path": "/",
+                      "per_page": 10,
+                      "prev_page_url": null,
+                      "to": 7,
+                      "total": 7
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Return all non deleted users inside the database",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "stateID": {
+                    "type": "string"
+                  },
+                  "userGroupID": {
+                    "type": "string"
+                  },
+                  "itemsPerPage": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "stateID": "active",
+                    "userGroupID": "admins",
+                    "itemsPerPage": 10
+                  }
+                },
+                "example-2": {
+                  "value": {
+                    "stateID": "suspended",
+                    "itemsPerPage": 5
+                  }
+                },
+                "example-3": {
+                  "value": {
+                    "stateID": "active",
+                    "userGroupID": "admins"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "tags": [
+          "API"
+        ]
+      },
+      "parameters": []
+    },
+    "/show/{id}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "id",
+          "in": "path",
+          "required": true
         }
+      ],
+      "get": {
+        "summary": "Get User Data",
+        "tags": [
+          "API"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "fullName": {
+                      "type": "string"
+                    },
+                    "displayName": {
+                      "type": "string"
+                    },
+                    "gender": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "phoneNumber": {
+                      "type": "string"
+                    },
+                    "avatar": {
+                      "type": "string"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "stateID": {
+                      "type": "string"
+                    },
+                    "userGroup": {
+                      "type": "string"
+                    },
+                    "userGroupID": {
+                      "type": "string"
+                    },
+                    "privileges": {
+                      "type": "array",
+                      "items": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-show-id",
+        "description": "return all the data related to the user",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          }
+        ]
+      }
+    },
+    "/addnewuser": {
+      "post": {
+        "summary": "Add New User",
+        "operationId": "post-addnewuser",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "API"
+        ],
+        "description": "add new user to the database",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "displayName": {
+                    "type": "string"
+                  },
+                  "userGroupID": {
+                    "type": "string"
+                  },
+                  "stateID": {
+                    "type": "string"
+                  },
+                  "avatar": {
+                    "type": "string"
+                  },
+                  "phoneNumber": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "gender": {
+                    "type": "string"
+                  },
+                  "fullName": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "displayName",
+                  "userGroupID",
+                  "stateID",
+                  "phoneNumber",
+                  "email",
+                  "fullName",
+                  "password"
+                ]
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "displayName": "Ertiqa",
+                    "userGroupID": "admins",
+                    "stateID": "active",
+                    "avatar": "file",
+                    "phoneNumber": "+966598929996",
+                    "email": "info@ertiqa.tk",
+                    "gender": "male",
+                    "fullName": "Ertiq Website",
+                    "password": "secret12"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/update": {
+      "post": {
+        "summary": "Update User Data",
+        "operationId": "post-update",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "update user data",
+        "tags": [
+          "API"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "userGroupID": {
+                    "type": "string"
+                  },
+                  "stateID": {
+                    "type": "string"
+                  },
+                  "avatar": {
+                    "type": "string"
+                  },
+                  "phoneNumber": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "gender": {
+                    "type": "string"
+                  },
+                  "displayName": {
+                    "type": "string"
+                  },
+                  "fullName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id"
+                ]
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "id": 1,
+                    "userGroupID": "admins",
+                    "stateID": "active",
+                    "avatar": "link",
+                    "phoneNumber": "+9660930348",
+                    "email": "ertiqa@ertiqa.er",
+                    "gender": "female",
+                    "displayName": "Ertiq",
+                    "fullName": "ertiq"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/delete/{id}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "Delete User",
+        "operationId": "post-delete-id",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization"
+          }
+        ],
+        "description": "used to change user stateID to deleted",
+        "tags": [
+          "API"
+        ]
+      }
+    },
+    "/logout": {
+      "post": {
+        "summary": "User Logout",
+        "operationId": "post-logout",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "used to logout form the website",
+        "tags": [
+          "API"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          }
+        ]
+      }
+    },
+    "/resetpassword": {
+      "post": {
+        "summary": "Reset User Password",
+        "operationId": "post-resetpassword",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "reset user password",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "password"
+                ]
+              }
+            }
+          }
+        },
+        "tags": [
+          "API"
+        ]
+      }
+    },
+    "/signup": {
+      "post": {
+        "summary": "Users Signup",
+        "operationId": "post-signup",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "API"
+        ],
+        "description": "used to signup new user to the website",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fullName": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "gender": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "phoneNumber": {
+                    "type": "string"
+                  },
+                  "avatar": {
+                    "type": "string"
+                  },
+                  "displayName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "fullName",
+                  "password",
+                  "email",
+                  "phoneNumber",
+                  "displayName"
+                ]
+              },
+              "examples": {
+                "example-1": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getstates": {
+      "post": {
+        "summary": "Get Users States",
+        "operationId": "post-getstates",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "stateID": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "stateID",
+                    "name"
+                  ]
+                },
+                "examples": {
+                  "Result": {
+                    "value": [
+                      {
+                        "stateID": "active",
+                        "name": "مفعل",
+                        "description": "الحساب فعال",
+                        "created_at": "2020-04-10 08:42:39",
+                        "updated_at": "2020-04-10 08:42:39"
+                      },
+                      {
+                        "stateID": "deleted",
+                        "name": "محذوف",
+                        "description": "الحساب محذوف",
+                        "created_at": "2020-04-10 08:42:39",
+                        "updated_at": "2020-04-10 08:42:39"
+                      },
+                      {
+                        "stateID": "notActivated",
+                        "name": "غير مفعل",
+                        "description": "لم يتم تنشيط الحساب",
+                        "created_at": "2020-04-10 08:42:39",
+                        "updated_at": "2020-04-10 08:42:39"
+                      },
+                      {
+                        "stateID": "suspended",
+                        "name": "معلق",
+                        "description": "الحساب معلق",
+                        "created_at": "2020-04-10 08:42:39",
+                        "updated_at": "2020-04-10 08:42:39"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization"
+          }
+        ],
+        "tags": [
+          "API"
+        ]
       }
     }
   },
@@ -126,8 +1078,57 @@
           "stateID",
           "userGroupID",
           "password"
+        ],
+        "x-tags": [
+          "Model"
         ]
+      },
+      "state": {
+        "title": "state",
+        "type": "object",
+        "properties": {
+          "stateID": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "stateID",
+          "name"
+        ],
+        "x-tags": [
+          "Model"
+        ],
+        "x-examples": {
+          "active": {
+            "stateID": "active",
+            "name": "مفعل",
+            "decription": "الحساب فعال"
+          },
+          "notActivated": {
+            "stateID": "notActivated",
+            "name": "غير مفعل",
+            "decription": "لم يتم تنشيط الحساب"
+          },
+          "deleted": {
+            "stateID": "deleted",
+            "name": "محذوف",
+            "decription": "الحساب محذوف"
+          },
+          "suspended": {
+            "stateID": "suspended",
+            "name": "معلق",
+            "decription": "الحساب معلق"
+          }
+        },
+        "description": "Users state table, all date are created by the system.\nAll the inital data are included below."
       }
-    }
+    },
+    "securitySchemes": {}
   }
 }
