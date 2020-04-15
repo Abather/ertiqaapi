@@ -531,7 +531,7 @@
                   "stateID": {
                     "type": "string"
                   },
-                  "avatar": {
+                  "attachment": {
                     "type": "string"
                   },
                   "phoneNumber": {
@@ -921,7 +921,7 @@
                   "phoneNumber": {
                     "type": "string"
                   },
-                  "avatar": {
+                  "attachment": {
                     "type": "string"
                   },
                   "displayName": {
@@ -1035,6 +1035,9 @@
       "User": {
         "title": "User",
         "type": "object",
+        "x-tags": [
+          "Model"
+        ],
         "properties": {
           "id": {
             "type": "string"
@@ -1067,6 +1070,15 @@
           "password": {
             "type": "string",
             "format": "password"
+          },
+          "notiByEmail": {
+            "type": "boolean"
+          },
+          "notiByPhone": {
+            "type": "boolean"
+          },
+          "notiByWeb": {
+            "type": "boolean"
           }
         },
         "required": [
@@ -1077,10 +1089,10 @@
           "phoneNumber",
           "stateID",
           "userGroupID",
-          "password"
-        ],
-        "x-tags": [
-          "Model"
+          "password",
+          "notiByEmail",
+          "notiByPhone",
+          "notiByWeb"
         ]
       },
       "state": {
@@ -1127,6 +1139,19 @@
           }
         },
         "description": "Users state table, all date are created by the system.\nAll the inital data are included below."
+      },
+      "userFavoirteNoti": {
+        "title": "userFavoriteNoti",
+        "type": "object",
+        "description": "",
+        "properties": {
+          "userID": {
+            "type": "integer"
+          },
+          "favoriteID": {
+            "type": "string"
+          }
+        }
       }
     },
     "securitySchemes": {}

@@ -1,0 +1,76 @@
+openapi: 3.0.0
+info:
+  title: replacement
+  version: '1.0'
+  description: API of Replacements
+servers:
+  - url: 'https://ertiqatest.mahdi.cloud/api/replacement'
+paths: {}
+components:
+  schemas:
+    replacement:
+      title: replacement
+      type: object
+      description: ''
+      x-tags:
+        - Model
+      properties:
+        id:
+          type: integer
+        userID:
+          type: integer
+        specialtiesID:
+          type: string
+        placeID:
+          type: integer
+        transType:
+          type: string
+        title:
+          type: string
+        mailReplacement:
+          type: boolean
+        femailReplacement:
+          type: boolean
+        note:
+          type: string
+        publish_date:
+          type: string
+        stateID:
+          type: string
+        viewCount:
+          type: integer
+        reciveRequests:
+          type: boolean
+      required:
+        - id
+        - userID
+        - specialtiesID
+        - placeID
+        - transType
+        - mailReplacement
+        - femailReplacement
+        - stateID
+    replacementOffer:
+      title: replacementOffer
+      type: object
+      x-tags:
+        - Model
+      properties:
+        replacementID:
+          type: integer
+        placeID:
+          type: string
+        userID:
+          type: string
+    replacementPlacesRelation:
+      title: replacementPlacesRelation
+      type: object
+      properties:
+        replacementID:
+          type: integer
+        cityID:
+          type: string
+        priority:
+          type: integer
+      x-tags:
+        - Model

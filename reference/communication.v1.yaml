@@ -1,0 +1,49 @@
+openapi: 3.0.0
+info:
+  title: communication
+  version: '1.0'
+  description: API for communications
+servers: []
+paths: {}
+components:
+  schemas:
+    communicationType:
+      title: communicationType
+      type: object
+      properties:
+        communicationTypeID:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        logo:
+          type: string
+        websiteLink:
+          type: string
+        initialProfilesPath:
+          type: string
+      required:
+        - communicationTypeID
+        - name
+        - logo
+      x-tags:
+        - Model
+    communicationInfo:
+      title: communicationInfo
+      type: object
+      x-tags:
+        - Model
+      properties:
+        id:
+          type: integer
+        communicationTypeID:
+          type: string
+        relatedID:
+          type: string
+        userID:
+          type: integer
+        value:
+          type: string
+        note:
+          type: string
